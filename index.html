@@ -132,8 +132,9 @@
       let esMovil = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
       if (esMovil) {
-        alert("Restricción de sitio a computador. Serás redirigido.");
-        window.location.href = "https://cesarconstrucion.github.io/web/";
+        setTimeout(() => {
+          window.location.replace("https://cesarconstrucion.github.io/web/");
+        }, 100); // Redirigir después de 100ms para evitar bloqueos
       }
     }
   </script>
