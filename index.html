@@ -102,20 +102,49 @@
       padding: 20px 0;
       margin-top: auto;
     }
+
+    .alert-box {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      color: white;
+      text-align: center;
+      z-index: 1000;
+    }
+
+    .alert-box button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #ffd700;
+      border: none;
+      color: black;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
   </style>
   <script>
-    function forceDesktopView() {
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      if (isMobile) {
-        alert("Redirigiendo a la vista de sitio para computadora...");
-        if (document.documentElement.requestFullscreen) {
-          document.documentElement.requestFullscreen();
-        } else if (document.documentElement.webkitRequestFullscreen) { 
-          document.documentElement.webkitRequestFullscreen();
-        }
+    function mostrarAlerta() {
+      document.getElementById("alerta").style.display = "block";
+    }
+
+    function redirigir() {
+      window.location.href = "https://cesarconstrucion.github.io/web/";
+    }
+
+    function verificarDispositivo() {
+      let esMovil = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (esMovil) {
+        setTimeout(mostrarAlerta, 500);
       }
     }
-    window.onload = forceDesktopView;
+
+    window.onload = verificarDispositivo;
   </script>
 </head>
 <body>
@@ -138,6 +167,12 @@
     </video>
     <div class="music-label">Música Oficial</div>
   </div>
+
+  <div id="alerta" class="alert-box">
+    <p>⚠️ **Este sitio está restringido para dispositivos móviles** ⚠️<br>Serás redirigido al presionar "Aceptar".</p>
+    <button onclick="redirigir()">Aceptar</button>
+  </div>
+
   <footer>
     © 2025 Construcción con César. Todos los derechos reservados.
   </footer>
