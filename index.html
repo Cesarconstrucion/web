@@ -102,20 +102,31 @@
       padding: 20px 0;
       margin-top: auto;
     }
+
+    .music-button {
+      display: block;
+      width: 200px;
+      margin: 20px auto;
+      padding: 15px;
+      background-color: #ffd700;
+      color: #121212;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .music-button:hover {
+      background-color: #ffcc00;
+      transform: scale(1.1);
+    }
   </style>
   <script>
-    function forceDesktopView() {
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      if (isMobile) {
-        alert("Redirigiendo a la vista de sitio para computadora...");
-        if (document.documentElement.requestFullscreen) {
-          document.documentElement.requestFullscreen();
-        } else if (document.documentElement.webkitRequestFullscreen) { 
-          document.documentElement.webkitRequestFullscreen();
-        }
-      }
+    function scrollToMusic() {
+      document.getElementById('music-section').scrollIntoView({ behavior: 'smooth' });
     }
-    window.onload = forceDesktopView;
   </script>
 </head>
 <body>
@@ -130,8 +141,9 @@
   <div class="hero">
     <h1>Bienvenidos a Construcción con César</h1>
     <p>Donde cada proyecto se convierte en una obra maestra. Con experiencia, dedicación y calidad, hacemos realidad tus ideas.</p>
+    <button class="music-button" onclick="scrollToMusic()">Música Oficial</button>
   </div>
-  <div class="video-container">
+  <div class="video-container" id="music-section">
     <video controls>
       <source src="Construyendo Sueños.mp3" type="video/mp4">
       Tu navegador no soporta la reproducción de videos.
