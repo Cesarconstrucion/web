@@ -103,51 +103,61 @@
       margin-top: auto;
     }
 
-    .alert-box {
-      display: none;
+    /* Estilos para la alerta en móviles */
+    .mobile-alert {
+      display: none; /* Oculto por defecto */
       position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: rgba(0, 0, 0, 0.9);
-      padding: 20px;
-      border-radius: 10px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
       color: white;
       text-align: center;
+      padding: 50px;
+      font-size: 20px;
       z-index: 1000;
     }
 
-    .alert-box button {
-      margin-top: 10px;
+    .mobile-alert button {
+      margin-top: 20px;
       padding: 10px 20px;
-      background-color: #ffd700;
+      font-size: 18px;
+      font-weight: bold;
       border: none;
-      color: black;
-      font-size: 16px;
-      cursor: pointer;
       border-radius: 5px;
+      cursor: pointer;
+      background-color: #ffd700;
+      color: #121212;
+      transition: background-color 0.3s;
+    }
+
+    .mobile-alert button:hover {
+      background-color: #ffcc00;
     }
   </style>
   <script>
-    function mostrarAlerta() {
-      document.getElementById("alerta").style.display = "block";
-    }
-
-    function redirigir() {
-      window.location.href = "https://cesarconstrucion.github.io/web/";
-    }
-
-    function verificarDispositivo() {
-      let esMovil = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-      if (esMovil) {
-        setTimeout(mostrarAlerta, 500);
+    function showMobileAlert() {
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      if (isMobile) {
+        document.getElementById("mobile-alert").style.display = "block";
       }
     }
 
-    window.onload = verificarDispositivo;
+    function acceptAndRedirect() {
+      document.getElementById("mobile-alert").style.display = "none"; // Ocultar mensaje
+      window.location.href = "https://cesarconstrucion.github.io/web/"; // Redirigir a la web
+    }
+
+    window.onload = showMobileAlert;
   </script>
 </head>
 <body>
+  <div id="mobile-alert" class="mobile-alert">
+    <p>🔒 Restricción de sitio a computadoras. Serás redirigido al hacer clic en "Aceptar".</p>
+    <button onclick="acceptAndRedirect()">Aceptar</button>
+  </div>
+
   <header>
     Construcción con César
   </header>
@@ -167,12 +177,6 @@
     </video>
     <div class="music-label">Música Oficial</div>
   </div>
-
-  <div id="alerta" class="alert-box">
-    <p>⚠️ **Este sitio está restringido para dispositivos móviles** ⚠️<br>Serás redirigido al presionar "Aceptar".</p>
-    <button onclick="redirigir()">Aceptar</button>
-  </div>
-
   <footer>
     © 2025 Construcción con César. Todos los derechos reservados.
   </footer>
