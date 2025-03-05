@@ -128,19 +128,17 @@
       document.getElementById('music-section').scrollIntoView({ behavior: 'smooth' });
     }
 
-    function mostrarAlertaSiEsMovil() {
+    function redirigirSiEsMovil() {
       let esMovil = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
       if (esMovil) {
-        let aceptar = confirm("Restricción de sitio a computador y aceptar");
-        if (aceptar) {
-          window.location.href = "https://cesarconstrucion.github.io/web/";
-        }
+        alert("Restricción de sitio a computador. Serás redirigido.");
+        window.location.href = "https://cesarconstrucion.github.io/web/";
       }
     }
   </script>
 </head>
-<body onload="mostrarAlertaSiEsMovil()">
+<body onload="redirigirSiEsMovil()">
   <header>
     Construcción con César
   </header>
