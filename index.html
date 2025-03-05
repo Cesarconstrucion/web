@@ -54,7 +54,7 @@
       padding: 100px 20px;
       background: linear-gradient(135deg, #121212, #282828);
       color: #ffd700;
-      flex: 1; /* Permite que el contenido ocupe el espacio disponible */
+      flex: 1;
     }
 
     .hero h1 {
@@ -72,7 +72,7 @@
       color: #121212;
       text-align: center;
       padding: 20px 0;
-      margin-top: auto; /* Empuja el footer hacia abajo */
+      margin-top: auto;
     }
 
     .btn {
@@ -92,6 +92,25 @@
       transform: scale(1.05);
     }
   </style>
+  <script>
+    // Detectar si el usuario está en un dispositivo móvil
+    function forceDesktopView() {
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      if (isMobile) {
+        alert("Redirigiendo a la vista de sitio para computadora...");
+
+        // Fuerza la vista de escritorio (simulación)
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen();
+        } else if (document.documentElement.webkitRequestFullscreen) { 
+          document.documentElement.webkitRequestFullscreen();
+        }
+      }
+    }
+
+    // Llamar a la función al cargar la página
+    window.onload = forceDesktopView;
+  </script>
 </head>
 <body>
   <header>
@@ -101,6 +120,7 @@
     <a href="index.html">Inicio</a>
     <a href="servicios.html">Servicios</a>
     <a href="contacto.html">Contacto</a>
+
   </nav>
   <div class="hero">
     <h1>Bienvenidos</h1>
